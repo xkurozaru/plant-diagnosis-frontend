@@ -1,5 +1,6 @@
 # Plant-diagnosis-frontend
 ![Node 21](https://img.shields.io/badge/Node-21%2B-3178C6?logo=tsnode)
+![Next.js](https://img.shields.io/badge/-Next.js-black?logo=nextdotjs)
 ![Vercel](https://img.shields.io/badge/-Vercel-black?logo=vercel)
 
 ## Requirements
