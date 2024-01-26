@@ -17,7 +17,7 @@ const PredictionResultList = () => {
             } catch (e) { }
         }
         fetchPredictionResults()
-    }, [])
+    }, [token])
 
 
     return (

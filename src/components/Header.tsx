@@ -16,7 +16,7 @@ const Header = () => {
             }
         }
         fetchUser()
-    }, [])
+    }, [token])
 
     return (
         <Box as="header" bg="gray.100" px="6" py="6">
