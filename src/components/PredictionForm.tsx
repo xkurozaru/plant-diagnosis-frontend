@@ -56,7 +56,7 @@ const PredictionForm = () => {
             {predictionError && <Alert status="error" mt="5"><AlertIcon />{predictionError}</Alert>}
             {result && <Alert status="success" mt="5"><AlertIcon />{result}</Alert>}
             <Box mt="5">
-                <Image src={imagePreview} boxSize="fit-content" borderRadius="10%" alt="image" />
+                <Image src={imagePreview} boxSize="224" borderRadius="10%" alt="image" />
             </Box>
             <Box mt="2">
                 <Input type="file" accept="image/*" onChange={(e: any) => {
