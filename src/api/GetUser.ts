@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 
 export const GetUser = async () => {
   const token = useRecoilValue(tokenState);
+  console.log(token);
   const url = `${process.env.NEXT_PUBLIC_HOST}/users/me`;
   const headers = { Authorization: `Bearer ${token.access_token}` };
   try {
