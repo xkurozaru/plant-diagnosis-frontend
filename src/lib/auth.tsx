@@ -1,7 +1,7 @@
-import Cookies from "js-cookie";
+import { userState } from "@/lib/userState";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect } from "react";
-import { getUser } from "../api/getUser";
+import { useRecoilValue } from 'recoil';
 
 interface AuthProps {
     children: ReactNode;
@@ -9,22 +9,14 @@ interface AuthProps {
 
 const Auth = ({ children }: AuthProps): JSX.Element => {
     const router = useRouter();
-    const token = Cookies.get("token");
+    const state = useRecoilValue(userState)
 
     useEffect(() => {
-        if (token === undefined) {
+        if (!state.user) {
             router.push("/sign-in");
         }
-
-        const fetchUser = async () => {
-            const user = await getUser(token);
-            if (user === null) {
-                router.push("/sign-in");
-            }
-        };
-
-        fetchUser();
-    }, [router, token]);
+    }
+    , [state.user, router]);
 
     return <>{children}</>;
 };

@@ -1,11 +1,10 @@
-import Header from "@/components/Header"
-import PredictionForm from "@/components/PredictionForm"
-import PredictionResultList from "@/components/PredictionResultList"
-import { HStack } from "@chakra-ui/react"
-import Auth from "../lib/auth"
+import Header from "@/components/Header";
+import PredictionForm from "@/components/PredictionForm";
+import PredictionResultList from "@/components/PredictionResultList";
+import { HStack } from "@chakra-ui/react";
+import Auth from "../lib/auth";
 
-
-import type { NextPage } from 'next'
+import type { NextPage } from "next";
 
 const HomePage: NextPage = () => {
   return (
@@ -16,7 +15,7 @@ const HomePage: NextPage = () => {
         <PredictionResultList />
       </HStack>
     </Auth>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

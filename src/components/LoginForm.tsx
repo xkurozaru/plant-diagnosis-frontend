@@ -1,8 +1,11 @@
-import { signIn } from "@/api/signIn"
+import { GetUser } from "@/api/GetUser"
+import { SignIn } from "@/api/SignIn"
+import { tokenState } from "@/lib/tokenState"
+import { userState } from '@/lib/userState'
 import { Alert, AlertIcon, Box, Button, FormControl, FormLabel, Heading, Input } from "@chakra-ui/react"
-import Cookies from "js-cookie"
 import { useRouter } from "next/router"
 import { useState } from "react"
+import { useSetRecoilState } from 'recoil'
 
 const LoginForm = () => {
     const router = useRouter()
@@ -10,6 +13,8 @@ const LoginForm = () => {
     const [name, setName] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [alert, setAlert] = useState<string>("")
+    const setUser = useSetRecoilState(userState)
+    const setToken = useSetRecoilState(tokenState)
 
     const handleNameChange = (e: any) => setName(e.target.value)
     const handlePasswordChange = (e: any) => setPassword(e.target.value)
@@ -17,8 +22,10 @@ const LoginForm = () => {
     const handleLogin = async (e: any) => {
         setAlert("")
         try {
-            const res = await signIn(name, password)
-            Cookies.set("token", res.access_token)
+            const res = await SignIn(name, password)
+            setToken(res)
+            const user = await GetUser()
+            setUser(user)
             router.push("/")
         } catch (e) {
             setAlert("ユーザー名またはパスワードが間違っています")
