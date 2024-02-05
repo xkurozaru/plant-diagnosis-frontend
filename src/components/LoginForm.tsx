@@ -33,12 +33,13 @@ const LoginForm = () => {
     try {
       const token = await SignIn(name, password);
       setToken(token);
+      console.log(token);
       const user = await GetUser();
       setUser(user);
+      console.log(user);
       router.push("/");
     } catch (e) {
       setAlert("ユーザー名またはパスワードが間違っています");
-    } finally {
     }
   };
 

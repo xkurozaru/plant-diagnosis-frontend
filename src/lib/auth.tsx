@@ -12,8 +12,9 @@ const Auth = ({ children }: AuthProps): JSX.Element => {
   const state = useRecoilValue(userState);
 
   useEffect(() => {
-    if (state.username !== "") {
+    if (state.username != "") {
       router.push("/sign-in");
+      return;
     }
   }, [state, router]);
 
