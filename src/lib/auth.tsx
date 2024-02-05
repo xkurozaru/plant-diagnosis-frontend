@@ -1,24 +1,23 @@
 import { userState } from "@/lib/userState";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect } from "react";
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue } from "recoil";
 
 interface AuthProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 const Auth = ({ children }: AuthProps): JSX.Element => {
-    const router = useRouter();
-    const state = useRecoilValue(userState)
+  const router = useRouter();
+  const state = useRecoilValue(userState);
 
-    useEffect(() => {
-        if (!state.user) {
-            router.push("/sign-in");
-        }
+  useEffect(() => {
+    if (!state) {
+      router.push("/sign-in");
     }
-    , [state.user, router]);
+  }, [state, router]);
 
-    return <>{children}</>;
+  return <>{children}</>;
 };
 
 export default Auth;
